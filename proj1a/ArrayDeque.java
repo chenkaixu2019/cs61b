@@ -10,7 +10,7 @@ public class ArrayDeque<T> {
 		items = (T[]) new Object[8];
 		size = 0;
 		nextFirst = 0;
-		nextLast = 0;
+		nextLast = 1;
 	}
 
 	private void resize(int tosize) {
@@ -51,6 +51,7 @@ public class ArrayDeque<T> {
 		}
 		items[nextFirst] = item;
 		nextFirst = IndexMinusOne(nextFirst);
+		
 		size++;
 	}
 
