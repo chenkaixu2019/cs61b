@@ -88,7 +88,7 @@ public class ArrayDeque<T> {
 		nextFirst = IndexPlusOne(nextFirst);
 		T item = items[nextFirst];
 		size--;
-		if ((size * 4) < items.length) {
+		if ((size * 4) < items.length && size > 8) {
 			resize(items.length / 2);
 		}
 		return item;
@@ -101,7 +101,7 @@ public class ArrayDeque<T> {
 		nextLast = IndexMinusOne(nextLast);
 		T item = items[nextLast];
 		size--;
-		if ((size * 4) < items.length) {
+		if ((size * 4) < items.length && size > 8) {
 			resize(items.length / 2);
 		}
 		return item;
@@ -111,9 +111,9 @@ public class ArrayDeque<T> {
 		if (size == 0) {
 			return null;
 		}
-		int first = IndexPlusOne(nextFirst);
+		int first = nextFirst;
 
-		while (index > 0) {
+		while (index >= 0) {
 			first = IndexPlusOne(first);
 			index--;
 		}
