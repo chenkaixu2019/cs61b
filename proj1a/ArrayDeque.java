@@ -19,20 +19,22 @@ public class ArrayDeque<T> {
 		items = a;
 	}
 
-	private void IndexPlusOne(int i) {
+	private int IndexPlusOne(int i) {
 		if (i == items.length - 1) {
 			i = 0;
 		} else {
 			i++;
 		}
+		return i;
 	}
 
-	private void IndexMinusOne(int i) {
+	private int IndexMinusOne(int i) {
 		if (i == 0) {
 			i = items.length - 1;
 		} else {
 			i--;
 		}
+		return i;
 	}
 
 	public void addFirst(T item) {
@@ -40,7 +42,7 @@ public class ArrayDeque<T> {
 			resize(size * 2);
 		}
 		items[nextFirst] = item;
-		IndexMinusOne(nextFirst);
+		nextFirst=IndexMinusOne(nextFirst);
 		size++;
 	}
 
@@ -49,7 +51,7 @@ public class ArrayDeque<T> {
 			resize(size * 2);
 		}
 		items[nextLast] = item;
-		IndexPlusOne(nextLast);
+		nextLast=IndexPlusOne(nextLast);
 		size++;
 	}
 
@@ -76,16 +78,18 @@ public class ArrayDeque<T> {
 		}
 		if ((size * 4) < items.length) {
 			T[] a = (T[]) new Object[items.length / 2];
-			if (nextLast > nextFirst) {
-				System.arraycopy(items, nextFirst + 1, a, 0, size);
-			} else {
-				System.arraycopy(items, nextFirst + 1, a, 0, size - nextLast);
-				System.arraycopy(items, 0, a, size - nextLast, nextLast);
+			int first = IndexPlusOne(nextFirst);
+			int i = 0;
+			while (i<size) {
+				a[i] = items[first];
+				first = IndexPlusOne(first);
+				i++;
 			}
 			nextFirst = items.length - 1;
 			nextLast = size;
+			items = a;
 		}
-		IndexPlusOne(nextFirst);
+		nextFirst=IndexPlusOne(nextFirst);
 		T item = items[nextFirst];
 		size--;
 		return item;
@@ -95,20 +99,20 @@ public class ArrayDeque<T> {
 		if (size == 0) {
 			return null;
 		}
-		
 		if ((size * 4) < items.length) {
-			T[] a = (T[]) new Object[items.length/2];
-			if (nextLast > nextFirst) {
-				System.arraycopy(items, nextFirst + 1, a, 0, size);
+			T[] a = (T[]) new Object[items.length / 2];
+			int first = IndexPlusOne(nextFirst);
+			int i = 0;
+			while (i<size) {
+				a[i] = items[first];
+				first = IndexPlusOne(first);
+				i++;
 			}
-			else {
-				System.arraycopy(items, nextFirst + 1, a, 0, size-nextLast);	
-				System.arraycopy(items, 0, a, size-nextLast, nextLast );
-			}
-			nextFirst = items.length-1;
+			nextFirst = items.length - 1;
 			nextLast = size;
+			items = a;
 		}
-		IndexMinusOne(nextLast);
+		nextLast = IndexMinusOne(nextLast);
 		T item = items[nextLast];
 		size--;
 		return item;
