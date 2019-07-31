@@ -19,6 +19,10 @@ public class ArrayDeque<T> {
 		if (size == items.length) {
 			resize(size * 2);
 		}
+
+		if ((size * 4) < items.length) {
+			resize(items.length /2);
+		}
 		T[] a = (T[]) new Object[items.length];
 		a[0] = item;
 		System.arraycopy(items, 0, a, 1, size);
@@ -29,6 +33,10 @@ public class ArrayDeque<T> {
 	public void addLast(T item) {
 		if (size == items.length) {
 			resize(size * 2);
+		}
+
+		if ((size * 4) < items.length) {
+			resize(items.length /2);
 		}
 		items[size] = item;
 		size++;
