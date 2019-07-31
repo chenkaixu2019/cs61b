@@ -42,7 +42,7 @@ public class ArrayDeque<T> {
 			resize(size * 2);
 		}
 		items[nextFirst] = item;
-		nextFirst=IndexMinusOne(nextFirst);
+		nextFirst = IndexMinusOne(nextFirst);
 		size++;
 	}
 
@@ -51,7 +51,7 @@ public class ArrayDeque<T> {
 			resize(size * 2);
 		}
 		items[nextLast] = item;
-		nextLast=IndexPlusOne(nextLast);
+		nextLast = IndexPlusOne(nextLast);
 		size++;
 	}
 
@@ -80,7 +80,7 @@ public class ArrayDeque<T> {
 			T[] a = (T[]) new Object[items.length / 2];
 			int first = IndexPlusOne(nextFirst);
 			int i = 0;
-			while (i<size) {
+			while (i < size) {
 				a[i] = items[first];
 				first = IndexPlusOne(first);
 				i++;
@@ -89,7 +89,7 @@ public class ArrayDeque<T> {
 			nextLast = size;
 			items = a;
 		}
-		nextFirst=IndexPlusOne(nextFirst);
+		nextFirst = IndexPlusOne(nextFirst);
 		T item = items[nextFirst];
 		size--;
 		return item;
@@ -103,7 +103,7 @@ public class ArrayDeque<T> {
 			T[] a = (T[]) new Object[items.length / 2];
 			int first = IndexPlusOne(nextFirst);
 			int i = 0;
-			while (i<size) {
+			while (i < size) {
 				a[i] = items[first];
 				first = IndexPlusOne(first);
 				i++;
@@ -119,7 +119,18 @@ public class ArrayDeque<T> {
 	}
 
 	public T get(int index) {
-		return items[index];
+		if(size==0) {
+			return null;
+		}
+		int first = IndexPlusOne(nextFirst);
+
+		while (index >= 0);{
+			
+			first = IndexPlusOne(first);
+			index --;
+		}
+		return items[first];
+		
 
 	}
 }
