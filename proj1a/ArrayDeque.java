@@ -19,7 +19,7 @@ public class ArrayDeque<T> {
 		if (size == items.length) {
 			resize(size * 2);
 		}
-		T[] a = (T[]) new Object[size];
+		T[] a = (T[]) new Object[items.length];
 		a[0] = item;
 		System.arraycopy(items, 0, a, 1, size);
 		items = a;
@@ -59,7 +59,7 @@ public class ArrayDeque<T> {
 			resize(items.length /2);
 		}
 		T item = items[0];
-		T[] a = (T[]) new Object[size];
+		T[] a = (T[]) new Object[items.length];
 		System.arraycopy(items, 1, a, 0, size - 1);
 		items = a;
 		size--;
