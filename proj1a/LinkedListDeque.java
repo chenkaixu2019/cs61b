@@ -3,7 +3,7 @@ public class LinkedListDeque<T> {
 	private int size = 0;
 	private IntNode sentinel;
 
-	public class IntNode {
+	private class IntNode {
 		public T item;
 		public IntNode next;
 		public IntNode prev;
@@ -57,7 +57,7 @@ public class LinkedListDeque<T> {
 	}
 
 	public T removeFirst() {
-		if (sentinel.next == null) {
+		if (sentinel.next == null || sentinel.next == sentinel) {
 			return null;
 		}
 		T item = sentinel.next.item;
@@ -68,7 +68,7 @@ public class LinkedListDeque<T> {
 	}
 
 	public T removeLast() {
-		if (sentinel.prev == null) {
+		if (sentinel.prev == null|| sentinel.prev == sentinel) {
 			return null;
 		}
 		T item = sentinel.prev.item;
