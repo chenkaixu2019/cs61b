@@ -1,5 +1,5 @@
 
-public class ArrayDeque<T> implements Deque<T>{
+public class ArrayDeque<T> implements Deque<T> {
 
 	private T[] items;
 	private int size;
@@ -12,8 +12,7 @@ public class ArrayDeque<T> implements Deque<T>{
 		nextFirst = 0;
 		nextLast = 1;
 	}
-	
-	
+
 	private void resize(int tosize) {
 		T[] a = (T[]) new Object[tosize];
 		int first = IndexPlusOne(nextFirst);
@@ -27,7 +26,7 @@ public class ArrayDeque<T> implements Deque<T>{
 		nextFirst = items.length - 1;
 		nextLast = size;
 	}
-	
+
 	private int IndexPlusOne(int i) {
 		if (i == items.length - 1) {
 			i = 0;
@@ -45,7 +44,7 @@ public class ArrayDeque<T> implements Deque<T>{
 		}
 		return i;
 	}
-	
+
 	@Override
 	public void addFirst(T item) {
 		if (size == items.length) {
@@ -53,9 +52,10 @@ public class ArrayDeque<T> implements Deque<T>{
 		}
 		items[nextFirst] = item;
 		nextFirst = IndexMinusOne(nextFirst);
-		
+
 		size++;
 	}
+
 	@Override
 
 	public void addLast(T item) {
@@ -66,17 +66,20 @@ public class ArrayDeque<T> implements Deque<T>{
 		nextLast = IndexPlusOne(nextLast);
 		size++;
 	}
+
 	@Override
 
 	public boolean isEmpty() {
 		return size == 0;
 
 	}
+
 	@Override
 
 	public int size() {
 		return size;
 	}
+
 	@Override
 
 	public void printDeque() {
@@ -86,6 +89,7 @@ public class ArrayDeque<T> implements Deque<T>{
 			s++;
 		}
 	}
+
 	@Override
 
 	public T removeFirst() {
@@ -100,6 +104,7 @@ public class ArrayDeque<T> implements Deque<T>{
 		}
 		return item;
 	}
+
 	@Override
 
 	public T removeLast() {
@@ -114,6 +119,7 @@ public class ArrayDeque<T> implements Deque<T>{
 		}
 		return item;
 	}
+
 	@Override
 
 	public T get(int index) {

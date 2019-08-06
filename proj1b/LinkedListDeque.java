@@ -3,9 +3,9 @@ public class LinkedListDeque<T> implements Deque<T> {
 	private IntNode sentinel;
 
 	private class IntNode {
-		public T item;
-		public IntNode next;
-		public IntNode prev;
+		private T item;
+		private IntNode next;
+		private IntNode prev;
 
 		public IntNode(T i, IntNode n, IntNode p) {
 			this.item = i;

@@ -19,11 +19,15 @@ public class TestPalindrome {
 
 	@Test
 	public void testIsPalindrome() {
-		assertFalse(palindrome.isPalindrome("cat"));
+		assertTrue(palindrome.isPalindrome("cac"));
+		assertFalse(palindrome.isPalindrome("cafjksg"));
+
 	}
 
 	@Test
-	public void testIsPalindrome2() {
+	public void testIsPalindrome1() {
 		assertFalse(palindrome.isPalindrome("shjksd", OFFBYONE));
+		assertTrue(palindrome.isPalindrome("flake", OFFBYONE));
+
 	}
 }

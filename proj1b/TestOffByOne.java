@@ -11,5 +11,7 @@ public class TestOffByOne {
 	@Test
 	public void testOff() {
 		assertTrue(offByOne.equalChars('%', '&'));
+		assertFalse(offByOne.equalChars('R', '&'));
+
 	}
 }
