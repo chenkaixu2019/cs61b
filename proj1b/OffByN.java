@@ -1,9 +1,9 @@
-
 public class OffByN implements CharacterComparator {
+
 	private int difference;
 
 	public OffByN(int item) {
-		int difference = item;
+		difference = item;
 	}
 
 	@Override

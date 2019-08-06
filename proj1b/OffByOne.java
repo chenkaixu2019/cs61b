@@ -1,4 +1,3 @@
-
 public class OffByOne implements CharacterComparator {
 	@Override
 	public boolean equalChars(char a, char b) {
